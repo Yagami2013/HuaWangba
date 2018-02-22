@@ -6,8 +6,8 @@ import java.awt.Color;
 import java.awt.BasicStroke;
 import java.lang.Math;
 public class MyTurtle{
-	public static int width=400;
-	public static int hight=500;
+	public static int width=500;
+	public static int hight=400;
 	public static void main(String[] args){
 		Frame window=new Frame();
 		window.setSize(width,hight);
@@ -109,10 +109,10 @@ class MyPanel extends Panel{
 		
 		pen4line.drawLine(m1,n1,(int)xx1[0],ys3[0]);
 		pen4line.drawLine(m2,n2,(int)xx1[1],ys3[0]);
-		pen4line.drawLine(m3,n3,(int)xx2[0],ys3[1]);
-		pen4line.drawLine(m4,n4,(int)xx2[1],ys3[1]);
+		pen4line.drawLine(m3,n3,(int)xx2[1],ys3[1]);
+		pen4line.drawLine(m4,n4,(int)xx2[1],ys3[2]);
 		pen4line.drawLine(m5,n5,(int)xx3[0],ys3[2]);
-		pen4line.drawLine(m6,n6,(int)xx3[1],ys3[2]);
+		pen4line.drawLine(m6,n6,(int)xx2[0],ys3[1]);
 		
 		
 		
@@ -139,7 +139,7 @@ class MyPanel extends Panel{
 			leg_hight=n/5+1;
 		}else return;
 	}
-	public static double[] countOvalPoint(int h,int k,int a,int b,double x){
+	public static double[] countOvalPoint(double h,double k,double a,double b,double x){
 		double y1,y2;
 		y1=k+b/a*Math.sqrt(a*a-h*h-x*x+2*x*h);
 		y2=k-b/a*Math.sqrt(a*a-h*h-x*x+2*x*h);
