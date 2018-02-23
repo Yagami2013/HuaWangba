@@ -42,7 +42,64 @@ class MyPanel extends Panel{
 		int[] xs={centerX-dx,centerX+dx,centerX+dx*2,centerX+dx,centerX-dx,centerX-dx*2};
 		int[] ys={centerY-dy,centerY-dy,centerY,centerY+dy,centerY+dy,centerY};
 		g.drawPolygon(xs,ys,6);
+		int[][] num=getOvalPoint(centerX,centerY,turtleWidth/2,turtleHight/2);
+		g.drawLine(xs[0],ys[0],num[1][0],num[1][1]);
+		g.drawLine(xs[1],ys[1],num[6][0],num[6][1]);
+		g.drawLine(xs[2],ys[2],num[7][0],num[7][2]);
+		g.drawLine(xs[3],ys[3],num[5][0],num[5][2]);
+		g.drawLine(xs[4],ys[4],num[2][0],num[2][2]);
+		g.drawLine(xs[5],ys[5],num[0][0],num[0][2]);
+
+
+		/*g.setColor(Color.RED);
+		
+		for(int i=0;i<num.length;i++){
+			for(int j=0;j<3;j++){
+				g.drawOval(num[i][0],num[i][1],3,3);
+				g.drawOval(num[i][0],num[i][2],4,4);
+			}
+		}*/
 		
 		
+	}
+	public void testOvalPoint(){
+		int[][] num=getOvalPoint(centerX,centerY,turtleWidth/2,turtleHight/2);
+		for(int i=0;i<num.length;i++){
+			for(int j=0;j<3;j++){
+				System.out.print(num[i][j]+",");
+			}
+			System.out.println();
+		}
+	}
+
+	public int[][] getOvalPoint(int h,int k,int a,int b){
+		//int h=250,a=250,b=200,k=200;
+		if(h<a||k<b){return null;}
+		int[][] num=new int[8][3];
+		int i=0;
+		for(int x=h-a+1;x<h+a;x++){
+			double[] y=countOvalPoint(h,k,a,b,x);
+			int y0=(int)y[0];
+			if(y0<y[0])
+			{
+				
+			}else if(x==h){ 
+
+			}
+			else{
+				num[i][0]=x;
+				num[i][1]=(int)y[0];
+				num[i][2]=(int)y[1];
+				i++;
+			}
+		}
+		return num;
+	}
+	public static double[] countOvalPoint(double h,double k,double a,double b,double x){
+		double y1,y2;
+		y1=k+b/a*Math.sqrt(a*a-h*h-x*x+2*x*h);
+		y2=k-b/a*Math.sqrt(a*a-h*h-x*x+2*x*h);
+		double[] y={y1<y2?y1:y2,y1<y2?y2:y1};
+		return y;
 	}
 }

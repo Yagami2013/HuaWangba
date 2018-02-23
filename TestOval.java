@@ -21,17 +21,31 @@ public class TestOval{
 		}else{System.out.println("OK");}
 	}
 	static void testOvalPoint(){
-		int h=200,a=100,b=125,k=200;
+		int h=200,a=200,b=250,k=500;
 		//int h=250,a=250,b=200,k=200;
-		for(int x=100;x<300;x++){
+		int[][] num=new int[10][3];
+		int i=0;
+		for(int x=h-a+1;x<h+a;x++){
 			double[] y=countOvalPoint(h,k,a,b,x);
 			int y0=(int)y[0];
 			if(y0<y[0])
 			{
 				
-			}else{
-				System.out.println(x+","+y0+","+y[0]+","+y[1]);
+			}else if(x==h){ 
+
 			}
+			else{
+				num[i][0]=x;
+				num[i][1]=(int)y[0];
+				num[i][2]=(int)y[1];
+				i++;
+			}
+		}
+		for(int m=0;m<8;m++){
+			for(int n=0;n<3;n++){
+				System.out.print(num[m][n]+",");				
+			}
+			System.out.println();
 		}
 	}
 	public static double[] countOvalPoint(double h,double k,double a,double b,double x){
