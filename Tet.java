@@ -1,8 +1,10 @@
+import java.lang.Math;
 public class Tet{
 	public static void main(String[] args){
-		double a=2.33,b=2.34,c=2.35;
-		double[] num={a,b,c};
-		
-		System.out.println(num.length);
+		double a=45.0;
+		double b=Math.tan(Math.toRadians(a));
+		double degrees=Math.toDegrees(Math.atan(b));
+		System.out.println(b);
+		System.out.println(degrees);
 	}
 }

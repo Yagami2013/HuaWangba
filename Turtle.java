@@ -2,7 +2,9 @@ import java.awt.Frame;
 import java.awt.Panel;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.lang.Math;
 public class Turtle{
+
 	public static void main(String[] args){
 		
 		Frame window=new Frame();
@@ -18,7 +20,10 @@ class MyPanel extends Panel{
 	public int turtleWidth=200,turtleHight=250;
 	public int legWidth=turtleWidth/5,legHight=turtleHight/5;
 	public int eyeW=legWidth/4,eyeH=legHight/5;
+	
+	
 	public void paint(Graphics g){
+		int[][] num=getOvalPoint(centerX,centerY,turtleWidth/2,turtleHight/2);
 		g.setColor(Color.GREEN);
 		//body
 		g.fillOval(centerX-turtleWidth/2,centerY-turtleHight/2,turtleWidth,turtleHight);
@@ -29,11 +34,36 @@ class MyPanel extends Panel{
 		g.fillOval(centerX+turtleWidth/2-legWidth,centerY-turtleHight/2,legWidth,legHight);//right-front
 		g.fillOval(centerX-turtleWidth/2,centerY-turtleHight/2+turtleHight-legHight,legWidth,legHight);//left-back
 		g.fillOval(centerX+turtleWidth/2-legWidth,centerY+turtleHight/2-legHight,legWidth,legHight);//right-back
+
+		//tail
+		int x=num[4][0],y=num[4][2];
+		int len=num[4][0]-num[3][0];	
+		g.fillArc(x-len,y-len,len*2,len*2,-90,-90);
+		
+		g.setColor(this.getBackground());
+		//System.out.println(len);
+		double sqr2=Math.sqrt(2);
+		//System.out.println(len*sqr2);
+		//System.out.println((int)(len*sqr2));
+		int len2=(int)(len*sqr2);
+		g.fillArc(x-(len2-len)/2,y-(len2-len)/2,len2,len2,135,90);
+
+		/*g.drawRect(x-len,y-len,len*2,len*2);
+		g.drawRect(x,y,len,len);
+		g.drawRect(x-(len2-len)/2,y-(len2-len)/2,len2,len2);
+		g.setColor(Color.RED);
+		
+		for(int i=0;i<num.length;i++){
+			for(int j=0;j<3;j++){
+				g.drawOval(num[i][0],num[i][1],3,3);
+				g.drawOval(num[i][0],num[i][2],4,4);
+			}
+		}*/
+		
 		//eye
 		g.setColor(Color.YELLOW);
 		g.fillOval(centerX-2*eyeW,centerY-turtleHight/2-legHight+eyeH,eyeW,eyeH);//left
 		g.fillOval(centerX,centerY-turtleHight/2-legHight+eyeH,eyeW,eyeH);//right
-		//tail
 		
 		//figure
 		g.setColor(Color.BLACK);
@@ -42,23 +72,16 @@ class MyPanel extends Panel{
 		int[] xs={centerX-dx,centerX+dx,centerX+dx*2,centerX+dx,centerX-dx,centerX-dx*2};
 		int[] ys={centerY-dy,centerY-dy,centerY,centerY+dy,centerY+dy,centerY};
 		g.drawPolygon(xs,ys,6);
-		int[][] num=getOvalPoint(centerX,centerY,turtleWidth/2,turtleHight/2);
+		
 		g.drawLine(xs[0],ys[0],num[1][0],num[1][1]);
 		g.drawLine(xs[1],ys[1],num[6][0],num[6][1]);
 		g.drawLine(xs[2],ys[2],num[7][0],num[7][2]);
 		g.drawLine(xs[3],ys[3],num[5][0],num[5][2]);
 		g.drawLine(xs[4],ys[4],num[2][0],num[2][2]);
 		g.drawLine(xs[5],ys[5],num[0][0],num[0][2]);
-
-
-		/*g.setColor(Color.RED);
 		
-		for(int i=0;i<num.length;i++){
-			for(int j=0;j<3;j++){
-				g.drawOval(num[i][0],num[i][1],3,3);
-				g.drawOval(num[i][0],num[i][2],4,4);
-			}
-		}*/
+
+		
 		
 		
 	}
