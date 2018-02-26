@@ -3,6 +3,8 @@ import java.awt.Panel;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.lang.Math;
+import java.awt.Graphics2D;
+import java.awt.BasicStroke;
 public class Turtle{
 
 	public static void main(String[] args){
@@ -67,6 +69,8 @@ class MyPanel extends Panel{
 		
 		//figure
 		g.setColor(Color.BLACK);
+		Graphics2D g2=(Graphics2D)g;
+		g2.setStroke(new BasicStroke(3.0f));
 		g.drawOval(centerX-turtleWidth/2,centerY-turtleHight/2,turtleWidth,turtleHight);
 		int dx=turtleWidth/6,dy=turtleHight/5;
 		int[] xs={centerX-dx,centerX+dx,centerX+dx*2,centerX+dx,centerX-dx,centerX-dx*2};
