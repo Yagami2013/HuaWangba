@@ -19,23 +19,23 @@ public class Turtle{
 }
 class MyPanel extends Panel{
 	public int centerX=200,centerY=200;
-	public int turtleWidth=200,turtleHight=250;
-	public int legWidth=turtleWidth/5,legHight=turtleHight/5;
-	public int eyeW=legWidth/4,eyeH=legHight/5;
+	public int turtleWidth=200,turtleHeight=250;
+	public int legWidth=turtleWidth/5,legHeight=turtleHeight/5;
+	public int eyeW=legWidth/4,eyeH=legHeight/5;
 	
 	
 	public void paint(Graphics g){
-		int[][] num=getOvalPoint(centerX,centerY,turtleWidth/2,turtleHight/2);
+		int[][] num=getOvalPoint(centerX,centerY,turtleWidth/2,turtleHeight/2);
 		g.setColor(Color.GREEN);
 		//body
-		g.fillOval(centerX-turtleWidth/2,centerY-turtleHight/2,turtleWidth,turtleHight);
+		g.fillOval(centerX-turtleWidth/2,centerY-turtleHeight/2,turtleWidth,turtleHeight);
 		//head
-		g.fillOval(centerX-legWidth/2,centerY-turtleHight/2-legHight,legWidth,legHight);
+		g.fillOval(centerX-legWidth/2,centerY-turtleHeight/2-legHeight,legWidth,legHeight);
 		//legs
-		g.fillOval(centerX-turtleWidth/2,centerY-turtleHight/2,legWidth,legHight);//left-front
-		g.fillOval(centerX+turtleWidth/2-legWidth,centerY-turtleHight/2,legWidth,legHight);//right-front
-		g.fillOval(centerX-turtleWidth/2,centerY-turtleHight/2+turtleHight-legHight,legWidth,legHight);//left-back
-		g.fillOval(centerX+turtleWidth/2-legWidth,centerY+turtleHight/2-legHight,legWidth,legHight);//right-back
+		g.fillOval(centerX-turtleWidth/2,centerY-turtleHeight/2,legWidth,legHeight);//left-front
+		g.fillOval(centerX+turtleWidth/2-legWidth,centerY-turtleHeight/2,legWidth,legHeight);//right-front
+		g.fillOval(centerX-turtleWidth/2,centerY-turtleHeight/2+turtleHeight-legHeight,legWidth,legHeight);//left-back
+		g.fillOval(centerX+turtleWidth/2-legWidth,centerY+turtleHeight/2-legHeight,legWidth,legHeight);//right-back
 
 		//tail
 		int x=num[4][0],y=num[4][2];
@@ -64,15 +64,15 @@ class MyPanel extends Panel{
 		
 		//eye
 		g.setColor(Color.YELLOW);
-		g.fillOval(centerX-2*eyeW,centerY-turtleHight/2-legHight+eyeH,eyeW,eyeH);//left
-		g.fillOval(centerX,centerY-turtleHight/2-legHight+eyeH,eyeW,eyeH);//right
+		g.fillOval(centerX-2*eyeW,centerY-turtleHeight/2-legHeight+eyeH,eyeW,eyeH);//left
+		g.fillOval(centerX,centerY-turtleHeight/2-legHeight+eyeH,eyeW,eyeH);//right
 		
 		//figure
 		g.setColor(Color.BLACK);
 		Graphics2D g2=(Graphics2D)g;
 		g2.setStroke(new BasicStroke(3.0f));
-		g.drawOval(centerX-turtleWidth/2,centerY-turtleHight/2,turtleWidth,turtleHight);
-		int dx=turtleWidth/6,dy=turtleHight/5;
+		g.drawOval(centerX-turtleWidth/2,centerY-turtleHeight/2,turtleWidth,turtleHeight);
+		int dx=turtleWidth/6,dy=turtleHeight/5;
 		int[] xs={centerX-dx,centerX+dx,centerX+dx*2,centerX+dx,centerX-dx,centerX-dx*2};
 		int[] ys={centerY-dy,centerY-dy,centerY,centerY+dy,centerY+dy,centerY};
 		g.drawPolygon(xs,ys,6);
@@ -90,7 +90,7 @@ class MyPanel extends Panel{
 		
 	}
 	public void testOvalPoint(){
-		int[][] num=getOvalPoint(centerX,centerY,turtleWidth/2,turtleHight/2);
+		int[][] num=getOvalPoint(centerX,centerY,turtleWidth/2,turtleHeight/2);
 		for(int i=0;i<num.length;i++){
 			for(int j=0;j<3;j++){
 				System.out.print(num[i][j]+",");
